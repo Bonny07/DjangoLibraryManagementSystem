@@ -1,0 +1,74 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.button-red {
+    background-color: #FF0000;
+}
+
+.button-green {
+    background-color: #28A745;
+}
+
+.button-disabled {
+    background-color: #6C757D;
+    pointer-events: none;
+}
+
+.book-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.book-table th, .book-table td {
+    border: 1px solid #DDD;
+    padding: 8px;
+    text-align: left;
+}
+
+.book-table th {
+    background-color: #F8F8F8;
+}
+
+.messages {
+    margin-bottom: 20px;
+}
+
+.message {
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.message.error {
+    background-color: #FFCDD2;
+    color: #D32F2F;
+}
+
+.message.success {
+    background-color: #C8E6C9;
+    color: #388E3C;
+}
