@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Books</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'library/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>My Books</h1>
+
+        <!-- 用户信息 -->
+        <div class="user-info">
+            <p>Username: {{ request.user.username }}</p>
+            <p>Borrowed Books Count: {{ borrowed_books.count }}</p>
+        </div>
+
+        <!-- 借阅书籍表格 -->
+        <table class="book-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                    <th>Return</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for record in borrowed_books %}
+                    <tr>
+                        <td>{{ record.book.id }}</td>
+                        <td>{{ record.book.title }}</td>
+                        <td>{{ record.book.author.name }}</td>
+                        <td>{{ record.book.published_date.year }}</td>
+                        <td>
+                            <a href="{% url 'return_book' record.id %}" class="button button-red">Return</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- 返回按钮 -->
+        <div class="button-container">
+            <a href="{% url 'index' %}" class="button">Back to Library</a>
+        </div>
+    </div>
+</body>
+</html>

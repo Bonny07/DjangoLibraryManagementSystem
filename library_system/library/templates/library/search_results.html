@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Results</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'library/styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Search Results</h1>
+        <ul class="book-list">
+            {% for book in books %}
+                <li>{{ book.title }} by {{ book.author.name }} (Published on {{ book.published_date }})</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'search_book' %}" class="button">Back to Search</a>
+    </div>
+</body>
+</html>
