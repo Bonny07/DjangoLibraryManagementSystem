@@ -6,7 +6,7 @@ class BookForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ['title', 'author', 'published_date']
+        fields = ['title', 'author', 'published_date', 'total_quantity', 'available_quantity']
 
     def save(self, commit=True):
         author_name = self.cleaned_data.get('author_name')

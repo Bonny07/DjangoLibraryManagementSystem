@@ -6,9 +6,9 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    published_date = models.DateField()
-    total_quantity = models.PositiveIntegerField(default=1)
-    available_quantity = models.PositiveIntegerField(default=1)
+    total_quantity = models.PositiveIntegerField()
+    available_quantity = models.PositiveIntegerField()
+    published_date = models.DateField(null=True, blank=True)  # 修改此行
 
 class BorrowRecord(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)
