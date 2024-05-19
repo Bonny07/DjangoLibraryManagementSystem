@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Book, Author, BorrowRecord
-from .forms import BookForm
 from datetime import date
+
 
 def index(request):
     edit_mode = request.GET.get('edit_mode') == 'true'
@@ -22,12 +22,15 @@ def index(request):
 
 def add_book(request):
     if request.method == 'POST':
-        form = BookForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Book added successfully.')
-        else:
-            messages.error(request, 'Error adding book.')
+        title = request.POST.get('title')
+        author_name = request.POST.get('author')
+        total_quantity = request.POST.get('total_quantity')
+        available_quantity = request.POST.get('available_quantity')
+
+        author, created = Author.objects.get_or_create(name=author_name)
+        book = Book(title=title, author=author, total_quantity=total_quantity, available_quantity=available_quantity)
+        book.save()
+        messages.success(request, 'Book added successfully.')
     return redirect('index')
 
 def borrow_book(request, pk):
@@ -60,4 +63,21 @@ def delete_book(request, pk):
     book = get_object_or_404(Book, pk=pk)
     book.delete()
     messages.success(request, 'Book deleted successfully.')
+    return redirect('index')
+
+def update_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        author_name = request.POST.get('author')
+        total_quantity = request.POST.get('total_quantity')
+        available_quantity = request.POST.get('available_quantity')
+
+        author, created = Author.objects.get_or_create(name=author_name)
+        book.title = title
+        book.author = author
+        book.total_quantity = total_quantity
+        book.available_quantity = available_quantity
+        book.save()
+        messages.success(request, 'Book updated successfully.')
     return redirect('index')

@@ -1,56 +1,75 @@
+/* Basic styling for the library management system */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
 .container {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 80%;
+    margin: 50px auto;
+    background: #fff;
     padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     text-align: center;
-    margin-bottom: 20px;
+    color: #333;
 }
 
 .button-container {
-    text-align: center;
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 20px;
 }
 
 .button {
     display: inline-block;
     padding: 10px 20px;
-    margin: 5px;
-    background-color: #007BFF;
-    color: white;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007bff;
     text-decoration: none;
     border-radius: 5px;
-}
-
-.button-red {
-    background-color: #FF0000;
+    text-align: center;
+    margin-right: 10px;
 }
 
 .button-green {
-    background-color: #28A745;
+    background-color: #28a745;
 }
 
-.button-disabled {
-    background-color: #6C757D;
-    pointer-events: none;
+.button-red {
+    background-color: #dc3545;
 }
 
-.book-table {
+.button-grey {
+    background-color: #6c757d;
+}
+
+.button-container .button:last-child {
+    margin-right: 0;
+}
+
+table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
 
-.book-table th, .book-table td {
-    border: 1px solid #DDD;
-    padding: 8px;
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 10px;
     text-align: left;
 }
 
-.book-table th {
-    background-color: #F8F8F8;
+th {
+    background-color: #f2f2f2;
 }
 
 .messages {
@@ -63,12 +82,22 @@ h1 {
     margin-bottom: 10px;
 }
 
-.message.error {
-    background-color: #FFCDD2;
-    color: #D32F2F;
+.message.success {
+    background-color: #d4edda;
+    color: #155724;
 }
 
-.message.success {
-    background-color: #C8E6C9;
-    color: #388E3C;
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.message.warning {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
 }
