@@ -25,6 +25,24 @@
             </div>
         {% endif %}
 
+        <!-- 搜索表单 -->
+        {% if not edit_mode %}
+        <form method="get" action="{% url 'index' %}">
+            <div class="search-container">
+                <input type="text" name="id_query" value="{{ request.GET.id_query }}" placeholder="Search by ID">
+                <input type="text" name="title_query" value="{{ request.GET.title_query }}" placeholder="Search by Title">
+                <select name="author_query">
+                    <option value="">Search by Author</option>
+                    {% for author in authors %}
+                        <option value="{{ author.name }}" {% if author.name == request.GET.author_query %}selected{% endif %}>{{ author.name }}</option>
+                    {% endfor %}
+                </select>
+                <button type="submit" class="button button-blue">Search</button>
+                <a href="{% url 'index' %}" class="button button-grey">Reset</a>
+            </div>
+        </form>
+        {% endif %}
+
         <!-- 图书表格 -->
         <table>
             <thead>

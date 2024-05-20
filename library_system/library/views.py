@@ -1,13 +1,24 @@
+from django.db.models import Q
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .models import Book, Author, BorrowRecord
 from datetime import date
 
-
 def index(request):
     edit_mode = request.GET.get('edit_mode') == 'true'
+    id_query = request.GET.get('id_query')
+    title_query = request.GET.get('title_query')
+    author_query = request.GET.get('author_query')
     books = Book.objects.all()
-    authors = Author.objects.all()
+
+    if id_query:
+        books = books.filter(id__icontains=id_query)
+    if title_query:
+        books = books.filter(title__icontains=title_query)
+    if author_query:
+        books = books.filter(author__name__icontains=author_query)
+
+    authors = Author.objects.filter(book__isnull=False).distinct()
     new_edit_mode = 'false' if edit_mode else 'true'
     edit_button_text = 'Save' if edit_mode else 'Edit'
 
