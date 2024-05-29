@@ -1,4 +1,9 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+
+class CustomUser(AbstractUser):
+    phone_number = models.CharField(max_length=15, unique=True)
+    is_admin = models.BooleanField(default=False)
 
 class Author(models.Model):
     name = models.CharField(max_length=100)
@@ -8,7 +13,6 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     total_quantity = models.PositiveIntegerField()
     available_quantity = models.PositiveIntegerField()
-    published_date = models.DateField(null=True, blank=True)  # 修改此行
 
 class BorrowRecord(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE)

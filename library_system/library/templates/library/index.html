@@ -5,18 +5,131 @@
     <title>Library Books</title>
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'library/styles.css' %}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .user-info {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            text-align: right;
+        }
+        .user-info p {
+            margin: 0;
+        }
+        .button-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 5px;
+        }
+        .button-blue {
+            background-color: #007BFF;
+        }
+        .button-red {
+            background-color: #FF4136;
+        }
+        .button-grey {
+            background-color: #6c757d;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-container input,
+        .search-container select {
+            padding: 10px;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .search-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f8f8;
+        }
+        .messages {
+            margin-bottom: 20px;
+        }
+        .message {
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .message.success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+    </style>
 </head>
 <body>
+    <div class="user-info">
+        <p>Username: {{ user.username }}</p>
+        <p>Role: {% if user.is_superuser %}Admin{% else %}User{% endif %}</p>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="button button-grey">Logout</button>
+        </form>
+    </div>
     <div class="container">
         <h1>Library Books</h1>
 
-        <!-- 按钮 -->
-        <div class="button-container">
-            <a href="{% url 'my_books' %}" class="button">My Books</a>
-            <a href="{% url 'index' %}?edit_mode={{ new_edit_mode }}" class="button">{{ edit_button_text }}</a>
-        </div>
 
-        <!-- 显示消息 -->
+<div class="button-container">
+    <a href="{% url 'my_books' %}" class="button button-blue">My Books</a>
+    {% if user.is_superuser %}
+    <a href="{% url 'index' %}?edit_mode={{ new_edit_mode }}" class="button">{{ edit_button_text }}</a>
+    {% endif %}
+</div>
+
+
         {% if messages %}
             <div class="messages">
                 {% for message in messages %}
@@ -25,7 +138,6 @@
             </div>
         {% endif %}
 
-        <!-- 搜索表单 -->
         {% if not edit_mode %}
         <form method="get" action="{% url 'index' %}">
             <div class="search-container">
@@ -43,7 +155,6 @@
         </form>
         {% endif %}
 
-        <!-- 图书表格 -->
         <table>
             <thead>
                 <tr>
@@ -113,7 +224,7 @@
                 {% endfor %}
                 {% if edit_mode %}
                 <tr>
-                    <form method="post" action="{% url 'add_book' %}">
+                    <form method="post" action="{% url 'index' %}">
                         {% csrf_token %}
                         <td>New</td>
                         <td><input type="text" name="title" required></td>
