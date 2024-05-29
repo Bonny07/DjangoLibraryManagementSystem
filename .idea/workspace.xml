@@ -5,9 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="04d77d7d-f3d6-4dad-953f-fba08e9f4b23" name="Changes" comment="version beta1.1.1&#10;Fix search disappearing bug">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library_system/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/library_system/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library_system/library/templates/library/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/library_system/library/templates/library/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library_system/library/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/library_system/library/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library_system/library/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/library_system/library/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/library_system/library/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/library_system/library/serializers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/library_system/library/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/library_system/library/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,6 +93,15 @@
       <workItem from="1716139073382" duration="748000" />
       <workItem from="1716140256680" duration="2632000" />
       <workItem from="1716143159878" duration="557000" />
+      <workItem from="1716164465657" duration="879000" />
+      <workItem from="1716165534369" duration="72000" />
+      <workItem from="1716165609604" duration="2140000" />
+      <workItem from="1716173027469" duration="424000" />
+      <workItem from="1716189187208" duration="1249000" />
+      <workItem from="1716344148283" duration="3013000" />
+      <workItem from="1716802407505" duration="691000" />
+      <workItem from="1716900383493" duration="632000" />
+      <workItem from="1716993292123" duration="137000" />
     </task>
     <task id="LOCAL-00001" summary="version beta1.0.0">
       <option name="closed" value="true" />
@@ -99,7 +111,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716140519790</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="version beta1.1.1&#10;Fix search disappearing bug">
+      <option name="closed" value="true" />
+      <created>1716165262657</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1716165262657</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,7 +129,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="version beta1.0.0" />
     <MESSAGE value="version beta1.1.0&#10;Fixed many bugs and completed basic add, delete, modify and check functions" />
-    <option name="LAST_COMMIT_MESSAGE" value="version beta1.1.0&#10;Fixed many bugs and completed basic add, delete, modify and check functions" />
+    <MESSAGE value="version beta1.1.1&#10;Fix search disappearing bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="version beta1.1.1&#10;Fix search disappearing bug" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/LibraryManagementSystem$models.coverage" NAME="models Coverage Results" MODIFIED="1716122790702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/library_system/library" />
